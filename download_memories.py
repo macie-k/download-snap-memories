@@ -41,10 +41,11 @@ def downloadMemories(path):
                 req = requests.post(url, allow_redirects=True)
                 response = req.text
                 file = requests.get(response)
-
                 timestamp = datetime.datetime.timestamp(datetime.datetime.strptime(day + '-' + time, "%Y-%m-%d-%H-%M-%S"))
+
                 with open(filename, 'wb') as f:
                     f.write(file.content)
+                os.utime(filename, (timestamp, timestamp))
                 setctime(filename, timestamp)
             index += 1
         print('\n\n---------------- ')
