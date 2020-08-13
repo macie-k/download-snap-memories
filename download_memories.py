@@ -2,6 +2,9 @@ import json
 import requests
 import os
 import platform
+import datetime
+
+from win32_setctime import setctime
 
 clear = 'clear'
 
@@ -39,9 +42,10 @@ def downloadMemories(path):
                 response = req.text
                 file = requests.get(response)
 
+                timestamp = datetime.datetime.timestamp(datetime.datetime.strptime(day + '-' + time, "%Y-%m-%d-%H-%M-%S"))
                 with open(filename, 'wb') as f:
                     f.write(file.content)
-
+                setctime(filename, timestamp)
             index += 1
         print('\n\n---------------- ')
         input('[OK] Finished ')
