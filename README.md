@@ -9,8 +9,8 @@ Download all memories from Snapchat
 
 ## How to:
 - Go [here](https://accounts.snapchat.com/accounts/downloadmydata) and request your data
-- Wait for the e-mail from Snapchat & download provided file
-- Place `memories_history.json` file from requested data in the same directory
+- Wait for the e-mail from Snapchat & download the archive
+- Place `memories_history.json` file in the same directory
 - Launch the program
 
 <br>
@@ -29,4 +29,4 @@ Download all memories from Snapchat
 
 <br>
 
-- When using `.py` file you may need `requests` library
+- When using `.py` file you will need `requests` & `win32-setctime` libraries
