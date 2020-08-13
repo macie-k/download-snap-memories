@@ -3,7 +3,7 @@ Download all memories from Snapchat
 <br>
 
 ## Download
-- Latest release [here](https://github.com/emermacko/download-snap-memories/releases)
+- Download the latest release [here](https://github.com/emermacko/download-snap-memories/releases)
 
 <br>
 
