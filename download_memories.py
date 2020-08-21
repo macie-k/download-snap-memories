@@ -8,7 +8,7 @@ from win32_setctime import setctime
 
 clear = 'clear'
 
-def downloadMemories(path):
+def download_memories(path):
     os.system(clear)
 
     with open(path, 'r') as f:
@@ -58,7 +58,7 @@ if OS == 'Windows':
 
 try:
     path = 'json/memories_history.json' if os.path.exists('json') else 'memories_history.json'
-    downloadMemories(path)
+    download_memories(path)
 except Exception as e:
     print('[ERROR] ', e)
     input()
