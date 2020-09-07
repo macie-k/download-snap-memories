@@ -1,9 +1,9 @@
 import json
 import requests
-from subprocess import call
 import datetime
 import os
 
+from subprocess import call
 from win32_setctime import setctime
 
 def downloadMemories(path):
