@@ -43,7 +43,8 @@ def downloadMemories(path):
                 with open(filename, 'wb') as f:
                     f.write(file.content)
                 os.utime(filename, (timestamp, timestamp))
-                setctime(filename, timestamp)
+                if os.name=='nt':   ## only for windows overrite creation time
+                    setctime(filename, timestamp)
             index += 1
         print('\n\n---------------- ')
         input('[OK] Finished ')
