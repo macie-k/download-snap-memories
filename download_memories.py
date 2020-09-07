@@ -3,7 +3,10 @@ import requests
 import os
 import datetime
 
-from win32_setctime import setctime
+try:
+    from win32_setctime import setctime
+except: # for linux
+    pass
 
 def downloadMemories(path):
     clear()
