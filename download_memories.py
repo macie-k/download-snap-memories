@@ -1,15 +1,12 @@
 import json
 import requests
 import os
-import platform
 import datetime
 
 from win32_setctime import setctime
 
-clear = 'clear'
-
-def download_memories(path):
-    os.system(clear)
+def downloadMemories(path):
+    clear()
 
     with open(path, 'r') as f:
         content = json.load(f)
@@ -29,11 +26,11 @@ def download_memories(path):
 
             date = data['Date']
             url = data['Download Link']
-            type = data['Media Type']
+            filetype = data['Media Type']
 
             day = date.split(" ")[0]
             time = date.split(" ")[1].replace(':', '-')
-            filename = f'memories/{day}_{time}.mp4' if type == 'VIDEO' else f'memories/{day}_{time}.jpg'
+            filename = f'memories/{day}_{time}.mp4' if filetype == 'VIDEO' else f'memories/{day}_{time}.jpg'
 
             if not os.path.exists(filename):
                 print(f'[OK] Downloading [{index}/{len(media)}]\r', end="")
@@ -52,13 +49,11 @@ def download_memories(path):
         input('[OK] Finished ')
         exit()
 
-OS = platform.system()
-if OS == 'Windows':
-    clear = 'cls'
+clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
 
 try:
     path = 'json/memories_history.json' if os.path.exists('json') else 'memories_history.json'
-    download_memories(path)
+    downloadMemories(path)
 except Exception as e:
     print('[ERROR] ', e)
     input()
