@@ -1,7 +1,7 @@
 import json
 import requests
-import datetime
 import os
+import datetime
 
 from win32_setctime import setctime
 
@@ -49,7 +49,7 @@ def downloadMemories(path):
         input('[OK] Finished ')
         exit()
 
-clear = lambda: print('\n' * 100)
+clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
 
 try:
     path = 'json/memories_history.json' if os.path.exists('json') else 'memories_history.json'
