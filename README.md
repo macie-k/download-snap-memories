@@ -1,6 +1,11 @@
 # Download snapchat memories
 Download all memories from Snapchat  
+
 <br>
+
+<p align="center">
+  <a href="https://www.buymeacoffee.com/maciekk" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-black.png" alt="Buy Me A Coffee" height="50px"></a>
+</p>
 
 ## Download
 - Download the latest release [here](http://bit.ly/snap-mem-releases)
