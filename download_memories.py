@@ -3,6 +3,8 @@ import requests
 import os
 import datetime
 
+from tqdm import tqdm
+
 try:
     from win32_setctime import setctime
 except: # for linux
@@ -24,8 +26,7 @@ def downloadMemories(path):
                 input(f'[ERROR] Could not create directory: {e}')
                 exit()
 
-        index = 1
-        for data in media:
+        for data in tqdm(media, desc="[OK] Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar}{percentage:3.0f}%"):
 
             date = data['Date']
             url = data['Download Link']
@@ -36,7 +37,6 @@ def downloadMemories(path):
             filename = f'memories/{day}_{time}.mp4' if filetype == 'VIDEO' else f'memories/{day}_{time}.jpg'
 
             if not os.path.exists(filename):
-                print(f'[OK] Downloading [{index}/{len(media)}]\r', end="")
 
                 req = requests.post(url, allow_redirects=True)
                 response = req.text
@@ -48,7 +48,6 @@ def downloadMemories(path):
                 os.utime(filename, (timestamp, timestamp))
                 if os.name=='nt':   ## only for windows overrite creation time
                     setctime(filename, timestamp)
-            index += 1
         print('\n\n---------------- ')
         input('[OK] Finished ')
         exit()
