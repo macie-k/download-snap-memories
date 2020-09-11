@@ -30,7 +30,7 @@ Download all memories from Snapchat
 
 ## Launching
 - double click
-- or `python download-snap-memories.py`
+- or `python download_memories.py`
 
 <br>
 
