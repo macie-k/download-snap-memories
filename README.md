@@ -20,7 +20,7 @@ Download all memories from Snapchat
 
 <br>
 
-## Demo
+## Preview
 
 <p align="center">
   <img width="auto" height="auto" src="https://user-images.githubusercontent.com/25122875/92721231-0daee180-f366-11ea-847d-ab383c306a2d.png">
