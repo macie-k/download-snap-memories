@@ -37,14 +37,20 @@ def downloadMemories(path):
             filename = f'memories/{day}_{time}.mp4' if filetype == 'VIDEO' else f'memories/{day}_{time}.jpg'
 
             if not os.path.exists(filename):
-
                 req = requests.post(url, allow_redirects=True)
                 response = req.text
+
+                if response == '':
+                    print(f'\n\n[ERROR] Could not download memory: {filename[9:]}')
+                    print('[!] If this error persists request new data\n')
+                    continue
+
                 file = requests.get(response)
                 timestamp = datetime.datetime.timestamp(datetime.datetime.strptime(day + '-' + time, "%Y-%m-%d-%H-%M-%S"))
 
                 with open(filename, 'wb') as f:
                     f.write(file.content)
+                    
                 os.utime(filename, (timestamp, timestamp))
                 if os.name=='nt':   ## only for windows overrite creation time
                     setctime(filename, timestamp)
@@ -58,5 +64,4 @@ try:
     path = 'json/memories_history.json' if os.path.exists('json') else 'memories_history.json'
     downloadMemories(path)
 except Exception as e:
-    print('[ERROR] ', e)
-    input()
+    input(f'[ERROR] {e}')
