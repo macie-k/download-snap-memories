@@ -3,9 +3,9 @@ Download all memories from Snapchat
 
 <br>
 
-<p align="center">
+<p align="center" style="margin: 500px !important;">
   <a href="http://bit.ly/BuyMeACoffee-GitHub" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px" style="">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px">
   </a>
 </p>
 
