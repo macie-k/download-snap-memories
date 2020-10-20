@@ -4,11 +4,9 @@ Download all memories from Snapchat
 <br>
 
 <p align="center">
-  <br>
   <a href="http://bit.ly/BuyMeACoffee-GitHub" target="_blank">
-    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="60px" style="">
   </a>
-  <br>
 </p>
 
 ## Download
