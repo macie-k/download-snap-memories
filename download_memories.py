@@ -2,6 +2,7 @@ import json
 import requests
 import os
 import datetime
+import urllib
 
 from sys import exit
 from argparse import ArgumentParser
@@ -35,31 +36,53 @@ def downloadMemories(path):
     media.reverse() # start from the oldest ones
 
     for data in tqdm(media, desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
-
         date = data['Date']
         url = data['Download Link']
         filetype = data['Media Type']
 
         day = date.split(" ")[0]
         time = date.split(" ")[1].replace(':', '-')
-        filename = f'memories/{day}_{time}.mp4' if filetype == 'VIDEO' else f'memories/{day}_{time}.jpg'
+        filename = f'memories/{day}_{time}'
+        extension = '.mp4' if filetype == 'VIDEO' else '.jpg'
 
-        if not os.path.exists(filename):
-            req = requests.post(url, allow_redirects=True)
-            response = req.text
+        req = requests.post(url, allow_redirects=True)
+        response = req.text
 
-            if response == '':
-                print('\n\n')
-                error('Could not download', filename[9:])
-                warning('If this error persists request new data\n')
-                continue
+        if response == '':
+            print('\n\n')
+            error('Could not download', filename[9:])
+            warning('If this error persists request new data\n')
+            continue
 
+        downloaded = False
+        if os.path.exists(filename+extension):
+            dw_size = urllib.request.urlopen(response).info()['Content-Length']
+            
+            counter = 1
+            filename_copy = filename
+
+            while os.path.exists(filename+extension):
+                local_size = str(os.path.getsize(filename+extension))
+                if local_size == dw_size:
+                    downloaded = True
+                    break
+                
+                if counter == 1:
+                    filename += '_01'
+                    counter += 1
+                    continue
+
+                filename = filename_copy + f'_{counter:02}'
+                counter += 1
+
+        if not downloaded:
             file = requests.get(response)
-            timestamp = datetime.datetime.timestamp(datetime.datetime.strptime(day + '-' + time, "%Y-%m-%d-%H-%M-%S"))
-
+            
+            filename += extension
             with open(filename, 'wb') as f:
                 f.write(file.content)
                 
+            timestamp = datetime.datetime.timestamp(datetime.datetime.strptime(day + '-' + time, "%Y-%m-%d-%H-%M-%S"))
             os.utime(filename, (timestamp, timestamp))
             if os.name=='nt':   ## only for windows overrite creation time
                 setctime(filename, timestamp)
@@ -96,14 +119,15 @@ parser.add_argument('-d', '--find-duplicates', dest='duplicates', action='store_
 
 args = parser.parse_args()
 
-try:
-    path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
-    media = downloadMemories(path)
-    if args.duplicates:
-        save_duplicates(media)
-        success('Saved duplicates')
+# try:
+path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
+media = downloadMemories(path)
 
-    input()
-    exit()
-except Exception as e:
-    error('Execption occured', e, True)
+if args.duplicates:
+    save_duplicates(media)
+    success('Saved duplicates')
+
+input()
+exit()
+# except Exception as e:
+#     error('Execption occured', e, True)
