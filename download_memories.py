@@ -119,15 +119,15 @@ parser.add_argument('-d', '--find-duplicates', dest='duplicates', action='store_
 
 args = parser.parse_args()
 
-# try:
-path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
-media = downloadMemories(path)
+try:
+    path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
+    media = downloadMemories(path)
 
-if args.duplicates:
-    save_duplicates(media)
-    success('Saved duplicates')
+    if args.duplicates:
+        save_duplicates(media)
+        success('Saved duplicates')
 
-input()
-exit()
-# except Exception as e:
-#     error('Execption occured', e, True)
+    input()
+    exit()
+except Exception as e:
+    error('Execption occured', e, True)
