@@ -3,6 +3,7 @@ import requests
 import os
 import datetime
 
+from sys import exit
 from argparse import ArgumentParser
 from colorama import Fore
 from colorama import Style
@@ -95,14 +96,14 @@ parser.add_argument('-d', '--find-duplicates', dest='duplicates', action='store_
 
 args = parser.parse_args()
 
-# try:
-path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
-media = downloadMemories(path)
-if args.duplicates:
-    save_duplicates(media)
-    success('Saved duplicates')
+try:
+    path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
+    media = downloadMemories(path)
+    if args.duplicates:
+        save_duplicates(media)
+        success('Saved duplicates')
 
-input()
-exit()
-# except Exception as e:
-#     error('Execption occured', e, True)
+    input()
+    exit()
+except Exception as e:
+    error('Execption occured', e, True)
