@@ -20,7 +20,7 @@ Download all memories from Snapchat
 ## Preview
 
 <p align="center">
-  <img width="auto" height="auto" src="https://user-images.githubusercontent.com/25122875/102344131-bee39a00-3f9b-11eb-9e9c-eb246445aec8.png">
+  <img width="auto" height="auto" src="https://user-images.githubusercontent.com/25122875/102345128-2a7a3700-3f9d-11eb-8d5a-6e4970913a89.png">
 </p>
 
 <br>
@@ -31,6 +31,7 @@ Download all memories from Snapchat
 - Wait for the e-mail from Snapchat & download the archive
 - Place `memories_history.json` file in the same directory
 - Launch the program
+- Optionally use `-d` or `--find-duplicates` argument to save names that were skipped
 
 <br>
 
@@ -41,5 +42,5 @@ Download all memories from Snapchat
 <br>
 
 ## Sidenotes
-- Windows may **block** the executable when launched directly - **use cmd to avoid it**
-- When using `.py` file **you will need** `requests` & `win32-setctime` libraries
+- Windows may **block** the executable when launched directly - **start via cmd to avoid it**
+- When using `.py` file **you will need** `requests`, `win32-setctime` & `colorama` libraries
