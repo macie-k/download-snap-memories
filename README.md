@@ -42,5 +42,7 @@ Download all memories from Snapchat
 <br>
 
 ## Sidenotes
+- When using the `.py` file **you will need**:
+  - Python `3.8`
+  - `requests`, `win32-setctime`, `tqdm` & `colorama` libraries <br><br>
 - Windows may **block** the executable when launched directly - **start via cmd to avoid it**
-- When using `.py` file **you will need** `requests`, `win32-setctime` & `colorama` libraries
