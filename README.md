@@ -46,6 +46,4 @@ Download all memories from Snapchat
 <br>
 
 ## Sidenotes
-- When using the `.py` file **you will need**:
-  - Python `3.8`
 - Windows may **block** the executable when launched directly - **start via cmd to avoid it**
