@@ -36,13 +36,17 @@ Download all memories from Snapchat
 <br>
 
 ## Launching
-- double click
-- or `python download_memories.py`
+- Windows:
+  - Just download the `.exe` file
+  - Or install python 3.x
+  - And run `pip install -r requirements.txt` to install dependencies <br><br>
+- [Linux](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_linux_instructions.md)
+- [macOS](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md)
+
 
 <br>
 
 ## Sidenotes
 - When using the `.py` file **you will need**:
   - Python `3.8`
-  - `requests`, `win32-setctime`, `tqdm` & `colorama` libraries <br><br>
 - Windows may **block** the executable when launched directly - **start via cmd to avoid it**
