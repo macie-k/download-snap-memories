@@ -130,4 +130,4 @@ try:
     input()
     exit()
 except Exception as e:
-    error('Execption occured', e, True)
+    error('Exception occured', e, True)
