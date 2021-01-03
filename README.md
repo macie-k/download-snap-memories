@@ -47,4 +47,5 @@ Download all memories from Snapchat
 <br>
 
 ## Sidenotes
+- If you have a lot memories, it's better to split the `.json` file in 2-3 parts
 - Windows may **block** the executable when launched directly - **start via cmd to avoid it**
