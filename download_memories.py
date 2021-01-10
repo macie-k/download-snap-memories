@@ -38,10 +38,10 @@ def downloadMemories(path):
             exit()
 
     already_downloaded = len(os.listdir('memories'))
-    counter = 0
+    dw_counter = 0
 
     for data in tqdm(media, desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
-        if((counter := counter+1) < already_downloaded - 1) :   # skip already downloaded without last one in case it was corrupted
+        if((dw_counter := dw_counter+1) < already_downloaded - 1) :   # skip already downloaded without last one in case it was corrupted
             continue
         
         date = data['Date']
