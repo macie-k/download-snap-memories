@@ -9,13 +9,16 @@ from argparse import ArgumentParser
 from colorama import Fore
 from colorama import Style
 from tqdm import tqdm
-from find_duplicates import save_duplicates
 
 try:
-    from win32_setctime import setctime
-except: # for linux
+    from find_duplicates import save_duplicates     # save_duplicates is not necessary
+except:
     pass
-
+try:
+    from win32_setctime import setctime             # for linux
+except:
+    pass
+    
 def downloadMemories(path):
     clear()
 
@@ -24,6 +27,7 @@ def downloadMemories(path):
         media = content['Saved Media']
 
     success(f'Found {len(media)} files')
+    media.reverse() # start from the oldest ones
 
     if not os.path.exists('memories'):
         try:
@@ -33,9 +37,13 @@ def downloadMemories(path):
             error('Could not create directory', e)
             exit()
 
-    media.reverse() # start from the oldest ones
+    already_downloaded = len(os.listdir('memories'))
+    counter = 0
 
     for data in tqdm(media, desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
+        if((counter := counter+1) < already_downloaded - 1) :   # skip already downloaded without last one in case it was corrupted
+            continue
+        
         date = data['Date']
         url = data['Download Link']
         filetype = data['Media Type']
@@ -119,7 +127,7 @@ parser.add_argument('-d', '--find-duplicates', dest='duplicates', action='store_
 
 args = parser.parse_args()
 
-try:
+try:        
     path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
     media = downloadMemories(path)
 
