@@ -5,7 +5,6 @@ import datetime
 import urllib
 
 from sys import exit
-from argparse import ArgumentParser
 from colorama import Fore
 from colorama import Style
 from tqdm import tqdm
