@@ -11,10 +11,6 @@ from colorama import Style
 from tqdm import tqdm
 
 try:
-    from find_duplicates import save_duplicates     # save_duplicates is not necessary
-except:
-    pass
-try:
     from win32_setctime import setctime             # for linux
 except:
     pass
@@ -41,7 +37,7 @@ def downloadMemories(path):
     dw_counter = 0
 
     for data in tqdm(media, desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
-        if((dw_counter := dw_counter+1) < already_downloaded - 1) :   # skip already downloaded without last one in case it was corrupted
+        if((dw_counter := dw_counter+1) < already_downloaded) :   # skip already downloaded without last one in case it was corrupted
             continue
         
         date = data['Date']
@@ -121,19 +117,31 @@ def error(str, e='', as_input=False):
         input(output)
     else:
         print(output)
+        
+def save_duplicates(media):
+    # get all dates from json
+    list_of_dates = []
+    for obj in media:
+        list_of_dates.append(obj['Date'])
 
-parser = ArgumentParser()
-parser.add_argument('-d', '--find-duplicates', dest='duplicates', action='store_true', default=None, help='Direct login info')
-
-args = parser.parse_args()
+    # find all duplicates
+    seen = set()
+    seen_add = seen.add
+    duplicates = list(set(x for x in list_of_dates if x in seen or seen_add(x)))
+    
+    return duplicates
 
 try:        
     path = 'memories_history.json' if not os.path.exists('json') else 'json/memories_history.json'
     media = downloadMemories(path)
-
-    if args.duplicates:
-        save_duplicates(media)
-        success('Saved duplicates')
+    duplicates = save_duplicates(media)
+    dup_len = len(duplicates)
+    
+    if dup_len > 0:
+        warning(f'{dup_len} duplicates detected, saving to file ...')
+        with open('duplicates.txt', 'w+') as f:
+            for d in duplicates:
+                f.write(d + '\n')
 
     input()
     exit()
