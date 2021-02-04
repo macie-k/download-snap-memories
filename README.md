@@ -31,7 +31,6 @@ Download all memories from Snapchat
 - Wait for the e-mail from Snapchat & download the archive
 - Place `memories_history.json` file in the same directory
 - Launch the program
-- Optionally use `-d` or `--find-duplicates` argument to save names that were skipped
 
 <br>
 
@@ -43,6 +42,12 @@ Download all memories from Snapchat
 - [macOS](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md)
 - [Android](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_android_instructions.md)
 
+<br>
+
+## Duplicates
+- Warning about duplicates means that the `.json` file contains multiple entries for the exact same file
+- Usually that means everything was downloaded correctly, but for your information skipped duplicates were saved to a file
+- You can verify the memories by manually downloading them via the `.html` file and comparing to those from the `memories` folder
 
 <br>
 
