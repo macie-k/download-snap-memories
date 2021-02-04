@@ -2,7 +2,7 @@
 
 <br>
 
-## Below information is based on this [issue](https://github.com/emermacko/download-snap-memories/issues/4)
+## Below information is based on [this](https://github.com/emermacko/download-snap-memories/issues/4) issue
 
 <br>
 
@@ -25,3 +25,15 @@ pyenv install 3.9.0
 ## Running
 - Navigate to script's folder
 - To run the script just use `python3 download_memories.py`
+
+## SSL Error
+If you encounter SSL certificate error try running either of these commands:
+```bash
+$ pip install certifi
+$ /Applications/Python\ 3.x/Install\ Certificates.command
+```
+or
+``` bash
+$ sudo /Applications/Python\ 3.x/Install\ Certificates.command
+```
+In both cases replace the `x` with your version
