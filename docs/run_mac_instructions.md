@@ -29,11 +29,14 @@ pyenv install 3.9.0
 ## SSL Error
 If you encounter SSL certificate error try running either of these commands:
 ```bash
-$ pip install certifi
+$ pip3 install certifi
 $ /Applications/Python\ 3.x/Install\ Certificates.command
 ```
 or
 ``` bash
 $ sudo /Applications/Python\ 3.x/Install\ Certificates.command
 ```
-In both cases replace the `x` with your version
+In both cases replace the `x` with your version, you can check it using
+```bash
+$ python --version
+```
