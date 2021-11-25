@@ -53,6 +53,6 @@ Download all memories from Snapchat
 
 ## Sidenotes
 - macOS users will very likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
+- `Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
+- Windows will likely block the executable as it's unsigned
 - Don't place both `json` folder and `memories_history.json` in the same directory
-- `[ERROR] Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
-- Windows may **block** the executable when launched directly - **start via cmd to avoid it**
