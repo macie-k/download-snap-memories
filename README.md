@@ -54,5 +54,5 @@ Download all memories from Snapchat
 ## Sidenotes
 - macOS users will very likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
 - Don't place both `json` folder and `memories_history.json` in the same directory
-- If you have a lot of memories, it's better to split the `.json` file in 2-3 parts
+- `[ERROR] Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
 - Windows may **block** the executable when launched directly - **start via cmd to avoid it**
