@@ -10,7 +10,7 @@ from colorama import Style
 from tqdm import tqdm
 
 try:
-    from win32_setctime import setctime             # for linux
+    from win32_setctime import setctime             # try importing windows-only library
 except:
     pass
     
@@ -35,7 +35,12 @@ def downloadMemories(path):
     already_downloaded = len(os.listdir('memories'))
     dw_counter = 0
 
-    for data in tqdm(media, desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ", unit="file", ncols=70, bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
+    for data in tqdm(media,
+            desc=f"{Fore.GREEN}[OK]{Style.RESET_ALL} Downloading: ",
+            unit="file",
+            ncols=70,
+            bar_format="{desc}{n_fmt}/{total_fmt} {bar} {percentage:3.0f}%"):
+
         if((dw_counter := dw_counter+1) < already_downloaded) :   # skip already downloaded without last one in case it was corrupted
             continue
         
@@ -46,7 +51,7 @@ def downloadMemories(path):
         day = date.split(" ")[0]
         time = date.split(" ")[1].replace(':', '-')
         filename = f'memories/{day}_{time}'
-        extension = '.mp4' if filetype == 'VIDEO' else '.jpg'
+        extension = '.mp4' if filetype == 'Video' else '.jpg'
 
         req = requests.post(url, allow_redirects=True)
         response = req.text
