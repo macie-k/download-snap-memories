@@ -13,7 +13,7 @@ Download all memories from Snapchat
 <br>  
 
 ## Download
-- Download the latest release [here](https://shrinke.me/snap-mem-releases)
+- Download the latest release [here](https://bit.ly/3AOfY7B)
 
 <br>
 
@@ -26,8 +26,8 @@ Download all memories from Snapchat
 <br>
 
 ## How to
-- [Video](https://shrinke.me/snap-tutorial) tutorial <br><br>
-- Go [here](https://shrinke.me/snap-data) and request your data
+- [Video](https://bit.ly/33OqDQI) tutorial <br><br>
+- Go [here](https://accounts.snapchat.com/accounts/downloadmydata) and request your data
 - Wait for the e-mail from Snapchat & download the archive
 - Place `memories_history.json` file in the same directory
 - Launch the program
