@@ -26,7 +26,7 @@ Download all memories from Snapchat
 <br>
 
 ## How to
-- [Video](https://bit.ly/33OqDQI) tutorial <br><br>
+- [Video](http://ceesty.com/eamaJb) tutorial <br><br>
 - Go [here](https://accounts.snapchat.com/accounts/downloadmydata) and request your data
 - Wait for the e-mail from Snapchat & download the archive
 - Place `memories_history.json` file in the same directory
