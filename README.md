@@ -13,7 +13,7 @@ Download all memories from Snapchat
 <br>  
 
 ## Download
-- Download the latest release [here](http://bit.ly/snap-mem-releases)
+- Download the latest release [here](http://ceesty.com/eamtOE)
 
 <br>
 
