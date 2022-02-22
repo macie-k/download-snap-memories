@@ -10,7 +10,7 @@ from colorama import Style
 from tqdm import tqdm
 
 try:
-    from win32_setctime import setctime             # try importing windows-only library
+    from win32_setctime import setctime # try importing windows-only library
 except:
     pass
     
@@ -97,6 +97,8 @@ def downloadMemories(path):
 
     print('\n\n----------------\n')
     success('Finished')
+    input('\nSaved you a lot of time? Buy me a coffee: https://www.buymeacoffee.com/maciekk')
+
     return media
 
 clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
