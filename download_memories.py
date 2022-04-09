@@ -3,6 +3,7 @@ import requests
 import os
 import datetime
 import urllib
+import piexif
 
 from sys import exit
 from colorama import Fore
@@ -94,6 +95,18 @@ def downloadMemories(path):
             os.utime(filename, (timestamp, timestamp))
             if os.name=='nt':   ## only for windows overrite creation time
                 setctime(filename, timestamp)
+            
+            # Add date information to EXIF information of image for support in cloud services (Amazon Photos, Google Photos, etc.)
+            if not filetype == 'Video':
+                exif_dict = piexif.load(filename)
+                piexif.remove(filename)
+                new_date = datetime.datetime.fromtimestamp(timestamp).strftime("%Y:%m:%d %H:%M:%S")
+                exif_dict['0th'][piexif.ImageIFD.DateTime] = new_date
+                exif_dict['Exif'][piexif.ExifIFD.DateTimeOriginal] = new_date
+                exif_dict['Exif'][piexif.ExifIFD.DateTimeDigitized] = new_date
+                exif_bytes = piexif.dump(exif_dict)
+                piexif.insert(exif_bytes, filename)
+            
 
     print('\n\n----------------\n')
     success('Finished')
