@@ -2,3 +2,4 @@ win32_setctime==1.0.1
 requests==2.24.0
 tqdm==4.48.2
 colorama==0.4.3
+piexif==1.1.3 
