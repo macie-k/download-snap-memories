@@ -24,7 +24,7 @@ pyenv install 3.9.0
 
 ## Running
 - Navigate to script's folder
-- To run the script just use `python3 download_memories.py`
+- To run the script just use `python3 run.py`
 
 ## SSL Error
 If you encounter SSL certificate error try running either of these commands:
