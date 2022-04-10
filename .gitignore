@@ -1,0 +1,6 @@
+src/__pycache__/
+build/
+dist/
+download_memories.spec
+memories/
+memories_history.json
