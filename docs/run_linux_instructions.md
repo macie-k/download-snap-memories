@@ -23,4 +23,4 @@
 
 ## Running
 - Navigate to script's folder
-- To run the script just use `python3 download_memories.py`
+- To run the script just use `python3 run.py`
