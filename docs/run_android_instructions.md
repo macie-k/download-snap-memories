@@ -17,7 +17,7 @@ $ pip3 install -r requirements.txt
   - Or do it via the command line if you're feeling adventurous
 - And now back to Termux, run the command:
 ```
-$ python3 download_memories.py
+$ python3 run.py
 ```
 
 <br>
