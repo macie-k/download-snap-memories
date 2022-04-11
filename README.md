@@ -29,8 +29,8 @@ Download all memories from Snapchat
 - [Video](https://bit.ly/33OqDQI) tutorial <br><br>
 - Go [here](https://accounts.snapchat.com/accounts/downloadmydata) and request your data
 - Wait for the e-mail from Snapchat & download the archive
-- Place `memories_history.json` file in the same directory
-- Launch the program
+- Place `memories_history.json` file in the same directory as `run.py` file
+- Launch the program (optionally use `--sort` argument to download in chronological order)
 
 <br>
 
@@ -52,6 +52,7 @@ Download all memories from Snapchat
 <br>
 
 ## Sidenotes
+- Since version `1.15.0` the files are being downloaded much faster, meaning you can get rate limited, in that case just wait few minutes
 - macOS users will very likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
 - `Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
 - Windows will likely block the executable as it's unsigned
