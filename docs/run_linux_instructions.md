@@ -5,7 +5,7 @@
 ## TL;DR
 - You need Python 3.x
 - Run `pip3 install -r requirements.txt`
-- Run `python3 download_memories.py`
+- Run `python3 run.py`
 
 <br>
 
