@@ -19,4 +19,5 @@ if __name__ == "__main__":
         input()
         exit()
     except Exception as e:
+        print()
         error('Exception occured', e, True)

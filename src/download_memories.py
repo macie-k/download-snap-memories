@@ -1,3 +1,4 @@
+import sys
 import os
 import aiohttp
 import asyncio
@@ -150,7 +151,8 @@ async def download_memories(path, sort):
     snaps = filter_not_downloaded(snaps)   # remove already downloaded
     
     # asynchronous file downloading
-    async with aiohttp.ClientSession() as session:
+    timeout = aiohttp.ClientTimeout(total=6000)
+    async with aiohttp.ClientSession(timeout=timeout) as session:
         await asyncio.gather(*[
             download_single_snap(session, snap, printer) for snap in snaps
         ])
@@ -158,3 +160,4 @@ async def download_memories(path, sort):
     print('\n\n----------------\n')
     success('Finished')
     input('\nSaved you a lot of time? Buy me a coffee: https://www.buymeacoffee.com/maciekk')
+    sys.exit()
