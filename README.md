@@ -37,23 +37,16 @@ Download all memories from Snapchat
 ## Launching
 - Windows:
   - Just download the `.exe` file
-  - Alternatively install python 3.x and run `pip install -r requirements.txt` to install dependencies <br><br>
+  - Alternatively install python 3.x, run `pip install -r requirements.txt` to install dependencies and then `python run.py` <br><br>
 - [Linux](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_linux_instructions.md)
 - [macOS](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md)
 - [Android](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_android_instructions.md)
 
 <br>
 
-## Duplicates
-- Warning about duplicates means that the `.json` file contains multiple entries for the exact same file
-- Usually that means everything was downloaded correctly, but for your information skipped duplicates were saved to a file
-- You can verify the memories by manually downloading them via the `.html` file and comparing to those from the `memories` folder
-
-<br>
-
 ## Sidenotes
-- Since version `1.15.0` the files are being downloaded much faster, meaning you can get rate limited, in that case just wait few minutes
-- macOS users will very likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
+- Since version `1.15.0` the files are being downloaded much faster, meaning you can get rate limited, just try again in few minutes
+- macOS users will likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
 - `Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
 - Windows will likely block the executable as it's unsigned
 - Don't place both `json` folder and `memories_history.json` in the same directory
