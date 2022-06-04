@@ -1,3 +1,4 @@
+from cmath import log
 import sys
 import os
 import aiohttp
@@ -16,6 +17,7 @@ except:
     pass
 
 clear = lambda: os.system('cls' if os.name=='nt' else 'clear')
+target_dir = './memories/'
 
 # removes duplicates based on mid parameter
 def deduplicate(snaps):
@@ -29,7 +31,7 @@ def filter_not_downloaded(snaps):
     list_of_files = []
     list_of_mids = []
 
-    for file in os.scandir('memories'):
+    for file in os.scandir(target_dir):
         list_of_files.append(file.name)
         if file.name.split(".")[-1] == 'jpg':
             mid = piexif.helper.UserComment.load(piexif.load(file.path)['Exif'][piexif.ExifIFD.UserComment])
@@ -73,7 +75,7 @@ async def download_single_snap(session, snap, printer):
         filename_copy = snap.base_name
 
         # create temporary file for video duplicates
-        temp_name = 'memories/' + str(time.time())
+        temp_name = target_dir + str(time.time())
         if snap.extension == '.mp4':
             with open(temp_name, 'wb') as f:
                 f.write(file)
@@ -118,11 +120,11 @@ async def download_single_snap(session, snap, printer):
 
         printer.update()
     
-async def download_memories(path, sort):
+async def download_memories(sort):
     clear()
 
     # load json content
-    with open(path, 'r') as f:
+    with open('memories_history.json', 'r') as f:
         content = json.load(f)
         media = content['Saved Media']
 
@@ -130,9 +132,9 @@ async def download_memories(path, sort):
     if sort:
         media.reverse()
 
-    if not os.path.exists('memories'):
+    if not os.path.exists(target_dir):
         try:
-            os.mkdir('memories')
+            os.mkdir(target_dir)
             success('Directory created\n')
         except Exception as e:
             error('Could not create directory', e)
@@ -143,18 +145,20 @@ async def download_memories(path, sort):
         snaps.append(Snap(item))      
     
     snaps = list(deduplicate(snaps))    # remove duplicates
-    success(f'Found {len(snaps)} files')
 
-    already_downloaded = len(os.listdir('memories'))
-    printer = StatusPrinter(already_downloaded, len(snaps))
+    success(f'Found {len(snaps)} memories')
+    success('Loading...')
 
-    snaps = filter_not_downloaded(snaps)   # remove already downloaded
-    
+    snaps_2_download = filter_not_downloaded(snaps)   # remove already downloaded
+    already_downloaded = len(os.listdir(target_dir))
+
     # asynchronous file downloading
     timeout = aiohttp.ClientTimeout(total=6000)
     async with aiohttp.ClientSession(timeout=timeout) as session:
+        printer = StatusPrinter(already_downloaded, len(snaps))
+
         await asyncio.gather(*[
-            download_single_snap(session, snap, printer) for snap in snaps
+            download_single_snap(session, snap, printer) for snap in snaps_2_download
         ])
 
     print('\n\n----------------\n')

@@ -1,5 +1,6 @@
 import piexif
 import piexif.helper
+import src.download_memories as dm
 
 from datetime import datetime
 from urllib.parse import urlparse, parse_qs
@@ -14,7 +15,7 @@ class Snap:
 
     # returns filename with path and extension
     def get_filename(self):
-        return 'memories/' + self.base_name + self.extension
+        return dm.target_dir + self.base_name + self.extension
 
     # saves exif information
     def save_exif(self):
