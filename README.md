@@ -29,8 +29,8 @@ Download all memories from Snapchat
 - [Video](https://bit.ly/33OqDQI) tutorial <br><br>
 - Go [here](https://accounts.snapchat.com/accounts/downloadmydata) and request your data
 - Wait for the e-mail from Snapchat & download the archive
-- Place `memories_history.json` file in the same directory as `run.py` file
-- Launch the program (optionally use `--sort` argument to download in chronological order)
+- Place `memories_history.json` file in the same directory as `run.py` or `download_memories.exe` files
+- Launch the program
 
 <br>
 
@@ -38,15 +38,21 @@ Download all memories from Snapchat
 - Windows:
   - Just download the `.exe` file
   - Alternatively install python 3.x, run `pip install -r requirements.txt` to install dependencies and then `python run.py` <br><br>
-- [Linux](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_linux_instructions.md)
-- [macOS](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md)
-- [Android](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_android_instructions.md)
+- [Linux instructions](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_linux_instructions.md)
+- [macOS instructions](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md)
+- [Android instructions](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_android_instructions.md)
+
+<br>
+
+## Arguments
+- `-s` `--sort`   Download snaps in chronological order
+- `-d` `--dir`    Specify target directory
+- `--show-errors` Show full error stack
 
 <br>
 
 ## Sidenotes
-- Since version `1.15.0` the files are being downloaded much faster, meaning you can get rate limited, just try again in few minutes
+- Since version `1.15.0`, files are being downloaded much faster, meaning you can get rate limited, in that case just retry after few minutes
 - macOS users will likely get an SSL error, [here](https://github.com/emermacko/download-snap-memories/blob/master/docs/run_mac_instructions.md) is the solution
 - `Invalid URL ‘ ‘ : No schema supplied` means the links in your json have expired, just request the data again
 - Windows will likely block the executable as it's unsigned
-- Don't place both `json` folder and `memories_history.json` in the same directory
