@@ -17,6 +17,13 @@ Download all memories from Snapchat
 
 <br>
 
+## Update
+Snapchat now allows you to download memories directly from their page by selecting `Do you want to include your memories as a downloadable file?` option. It will split your memories into multiple `.zip` files and will not name them properly, but it will allow you to download overlays (text, drawings) from that snaps. So choose what fits you.  
+
+For the script to work properly, don't select this option, but also uncheck `Filter your export by date range` field, to download all memories.
+
+<br>
+
 ## Preview
 
 <p align="">
